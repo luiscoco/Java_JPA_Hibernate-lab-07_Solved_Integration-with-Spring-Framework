@@ -149,10 +149,36 @@ public Company getCompany(int id) {
 
 ## 2. Solution
 
+Here are the MySQL commands to verify the app ran and persisted data.
 
+**Create database (if not already created)**
+
+```
+CREATE DATABASE IF NOT EXISTS JPA_DB_07 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+**Verify persisted data (run these after the app completes)**
+
+```
+USE JPA_DB_07;
+SHOW TABLES; (expect a Company table)
+SHOW CREATE TABLE Company\G
+SELECT COUNT(*) FROM Company; (expect 2)
+SELECT id, name FROM Company ORDER BY id; (expect “Microsoft” and “IBM”)
+```
 
 ## 3. How to Run the Application in VSCode
 
+Open the Terminal Window in VSCode and execute this command:
 
+```
+mvn exec:java
+```
+
+<img width="1919" height="1016" alt="image" src="https://github.com/user-attachments/assets/649669c0-4279-4c55-b3b9-ff30041305bb" />
+
+<img width="1918" height="1018" alt="image" src="https://github.com/user-attachments/assets/1e9741f0-27a9-41bf-892a-a9bac156908c" />
 
 ## 4. Application Output (MySQL database)
+
+<img width="1919" height="1016" alt="image" src="https://github.com/user-attachments/assets/fadf47c9-f9fe-4a53-8df4-d879ec9c536a" />
