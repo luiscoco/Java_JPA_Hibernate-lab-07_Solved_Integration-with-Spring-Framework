@@ -160,11 +160,18 @@ CREATE DATABASE IF NOT EXISTS JPA_DB_07 CHARACTER SET utf8mb4 COLLATE utf8mb4_un
 **Verify persisted data (run these after the app completes)**
 
 ```
+-- Create DataBase if not Exists
+CREATE DATABASE IF NOT EXISTS JPA_DB_07 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- confirms the schema was created (should return one row)
+SHOW DATABASES LIKE 'JPA_DB_07';
+-- switch to the lab database before inspecting tables.
 USE JPA_DB_07;
-SHOW TABLES; (expect a Company table)
-SHOW CREATE TABLE Company\G
-SELECT COUNT(*) FROM Company; (expect 2)
-SELECT id, name FROM Company ORDER BY id; (expect “Microsoft” and “IBM”)
+-- verifies Hibernate created the Company table.
+SHOW TABLES LIKE 'Company';
+--  confirms the column layout (id INT, name VARCHAR(255)).
+DESCRIBE Company;
+-- should show the rows inserted during the run (1 Microsoft, 2 IBM).
+SELECT id, name FROM Company ORDER BY id;
 ```
 
 ## 3. How to Run the Application in VSCode
